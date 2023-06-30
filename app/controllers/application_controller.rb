@@ -3,6 +3,8 @@
 class ApplicationController < ActionController::Base
   before_action :basic_auth, except: %i[index show]
 
+
+  
   private
 
   def basic_auth

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ItemsController < ApplicationController
   before_action :set_task, only: %i[show edit update destroy]
 
@@ -62,5 +64,4 @@ class ItemsController < ApplicationController
   def set_task
     @item = Item.find(params[:id])
   end
-
 end

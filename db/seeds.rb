@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -8,17 +9,17 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 item = Item.create(title: 'Fancy Product',
-  description: '$40.00 - $80.00',
-  status: 1)
+                   description: '$40.00 - $80.00',
+                   status: 1)
 
 item = Item.create(title: 'Special Item',
-  description: '$18.00',
-  status: 2)
+                   description: '$18.00',
+                   status: 2)
 
 item = Item.create(title: 'Sale Item',
-  description: '$25.00',
-  status: 3)
+                   description: '$25.00',
+                   status: 3)
 
 item = Item.create(title: 'Popular Item',
-  description: '$40.00',
-  status: 4)
+                   description: '$40.00',
+                   status: 4)

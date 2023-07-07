@@ -51,11 +51,19 @@ module Admin
     end
 
     # DELETE /tasks/1 or /tasks/1.json
+    # def destroy
+    #   @item.destroy
+
+    #   respond_to do |format|
+    #     format.html { redirect_to items_url, notice: 'Task was successfully destroyed.' }
+    #     format.json { head :no_content }
+    #   end
+    # end
     def destroy
       @item.destroy
 
       respond_to do |format|
-        format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
+        format.html { redirect_to admin_items_url, notice: 'Item was successfully destroyed.' }
         format.json { head :no_content }
       end
     end

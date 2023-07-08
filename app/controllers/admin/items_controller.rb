@@ -2,7 +2,7 @@
 
 module Admin
   class ItemsController < ApplicationController
-    before_action :basic_auth, except: %i[index show]
+    before_action :basic_auth
     before_action :set_task, only: %i[show edit update destroy]
 
     def index
@@ -79,8 +79,5 @@ module Admin
     def set_task
       @item = Item.find(params[:id])
     end
-    # def item_params
-    #   params.require(:item).permit(:attribute1, :attribute2, :attribute3)
-    # end
   end
 end

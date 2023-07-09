@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Admin::ItemsController handles the administration of items.
 module Admin
   class ItemsController < ApplicationController
     before_action :basic_auth

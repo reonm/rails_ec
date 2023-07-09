@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# Admin::ItemsController handles the administration of items.
 module Admin
+  # Admin::ItemsController handles the administration of items.
   class ItemsController < ApplicationController
     before_action :basic_auth
     before_action :set_task, only: %i[show edit update destroy]

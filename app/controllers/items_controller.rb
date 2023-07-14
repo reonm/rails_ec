@@ -4,7 +4,8 @@ class ItemsController < ApplicationController
   before_action :set_task, only: %i[show edit update destroy]
 
   def index
-    @item = Item.limit(4)
+    # @item = Item.limit(4)
+    @item = Item.all
   end
 
   # GET /tasks/1 or /tasks/1.json
@@ -53,9 +54,18 @@ class ItemsController < ApplicationController
     @item.destroy
 
     respond_to do |format|
-      format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
+      format.html { redirect_to tasks_url, notice: 'Item was successfully destroyed.' }
+
       format.json { head :no_content }
     end
+  end
+
+  def add_to_cart
+    # 商品IDをキーとして、その数量を値とするハッシュをセッションに保存
+    id = params[:id].to_s
+    cart[id] = (cart[id] || 0) + (params[:quantity] ? params[:quantity].to_i : 1)
+
+    redirect_to cart_item_path # カートの表示ページにリダイレクトする
   end
 
   private

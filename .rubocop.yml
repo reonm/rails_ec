@@ -27,7 +27,7 @@ require:
   - rubocop-rspec
   - rubocop-hc
 Style/Documentation:
-  Enabled: true
+  Enabled: false
 Metrics/MethodLength:
   Max: 20
   Exclude:

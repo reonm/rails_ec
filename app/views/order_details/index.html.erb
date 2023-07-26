@@ -1,0 +1,19 @@
+
+
+<h1 style="text-align: center;">Order list</h1>
+
+<section class="py-6">
+  <div class="container px-4 px-lg-5 mt-5">
+    <table class="table">
+      <tbody>
+        <% @order_details.each do |detail| %>
+          <tr>
+            <td class="text-center">
+              <%= link_to detail.item.title, order_detail_path(detail), class: "fw-bolder" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>

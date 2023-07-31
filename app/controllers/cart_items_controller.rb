@@ -33,6 +33,7 @@ class CartItemsController < ApplicationController
 
     respond_to do |format|
       if @order.save
+        AfterCheckoutMailer.receipt(@order).deliver_now
         format.html { redirect_to items_path, notice: 'ご購入ありがとうございました' }
         format.json { render :show, status: :created, location: @order }
       else
@@ -45,6 +46,7 @@ class CartItemsController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:first_name, :last_name, :username, :email, :address, :address2, :country, :state, :zip, :name_on_card, :credit_card_number, :expiration, :cvv)
+    params.require(:order).permit(:first_name, :last_name, :username, :email, :address, :address2, :country, :state,
+                                  :zip, :name_on_card, :credit_card_number, :expiration, :cvv)
   end
 end

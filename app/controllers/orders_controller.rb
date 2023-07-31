@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
@@ -5,15 +7,20 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
         # セッションのカート情報をOrderDetailとして保存
-          session[:cart].each do |item_id, quantity|
+        session[:cart].each do |item_id, quantity|
           item = Item.find(item_id)
           price = item.price
           total_price = price * quantity
-
-          @order.order_details.create(item_id: item_id, quantity: quantity, price: price, total_price: total_price, grand_total_amount: grand_total_amount)
+          title = item.title
+          @order.order_details.create(item_id: item_id, quantity: quantity, price: price, total_price: total_price,
+            title: title
+                                      # grand_total_amount: grand_total_amount
+          )
           # このコードは、Orderモデルが関連付けられたOrderDetailモデルを持っていると仮定しています。
           # また、OrderDetailにはitem_idとquantityのカラムがあると仮定しています。
         end
+
+        AfterCheckoutMailer.receipt(@order).deliver_now
 
         # カートの内容を削除
         session[:cart] = {}
@@ -29,7 +36,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:first_name, :last_name, :username, :email, :address, :address2, :country, :state, :zip, :name_on_card, :credit_card_number, :expiration, :cvv)
+    params.require(:order).permit(:first_name, :last_name, :username, :email, :address, :address2, :country, :state,
+                                  :zip, :name_on_card, :credit_card_number, :expiration, :cvv)
   end
-
 end

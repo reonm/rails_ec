@@ -1,10 +1,11 @@
+# frozen_string_literal: true
+
 class OrderDetailsController < ApplicationController
   before_action :basic_auth
   def index
     @order_details = OrderDetail.all
   end
 
-  
   def show
     @order_detail = OrderDetail.find(params[:id])
   end
@@ -16,5 +17,4 @@ class OrderDetailsController < ApplicationController
       username == ENV['BASIC_AUTH_USER'] && password == ENV['BASIC_AUTH_PASSWORD']
     end
   end
-
 end

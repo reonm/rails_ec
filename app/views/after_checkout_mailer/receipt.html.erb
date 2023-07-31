@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>購入レシート</title>
+</head>
+<body>
+    <h1>ありがとうございます！</h1>
+    <p>ご注文番号: <%= @order.id %></p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>商品名</th>
+                <th>数量</th>
+                <th>単価</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @order_details.each do |detail| %>
+                <tr>
+                    <td><%= detail.title %></td> <!-- 例えばこのような属性名です。実際の属性名に合わせてください -->
+                    <td><%= detail.quantity %></td>
+                    <td><%= detail.price %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+
+  
+
+    <p>何か質問や不明点があれば、お気軽にお問い合わせください。</p>
+
+    <p>よろしくお願いします、<br>Your Company Name</p>
+</body>
+</html>

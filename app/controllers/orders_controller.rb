@@ -13,9 +13,8 @@ class OrdersController < ApplicationController
           total_price = price * quantity
           title = item.title
           @order.order_details.create(item_id: item_id, quantity: quantity, price: price, total_price: total_price,
-            title: title
-                                      # grand_total_amount: grand_total_amount
-          )
+                                      title: title)
+          # grand_total_amount: grand_total_amount
           # このコードは、Orderモデルが関連付けられたOrderDetailモデルを持っていると仮定しています。
           # また、OrderDetailにはitem_idとquantityのカラムがあると仮定しています。
         end

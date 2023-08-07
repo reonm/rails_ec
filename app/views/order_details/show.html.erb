@@ -1,0 +1,24 @@
+<<h1 style="text-align: center;">Order Detail</h1>
+<section class="py-6">
+  <div class="container px-4 px-lg-5 mt-5">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Item</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @order_detail.item.title %></td>
+          <td><%= @order_detail.price %></td>
+ <!-- 価格のカラム名がわからないので、適切なものに置き換えてください -->
+          <td><%= @order_detail.quantity %></td>
+          <td><%= @order_detail.total_price %></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

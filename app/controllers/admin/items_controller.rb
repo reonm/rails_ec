@@ -6,7 +6,7 @@ class Admin::ItemsController < ApplicationController
       @item = Item.limit(4)
     end
 
-    # GET /tasks/1 or /tasks/1.json
+    
     def show
       @item = Item.where(id: params[:id]).order(created_at: :desc).first
     end
